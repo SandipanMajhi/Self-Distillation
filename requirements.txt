@@ -1,8 +1,4 @@
-torch
-torchvision
-torchaudio
 torch_geometric
 numpy
 networkx
 jax
-dgl
