@@ -15,6 +15,8 @@ if __name__ == "__main__":
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
 
+    print(f"Device used = {device}")
+
     graph, edges, adj, features, labels, train_mask, val_mask, test_mask = dataloader(param=cora_params)
     model = CoraModel(in_features=features.shape[1], hidden_features=cora_params["hid_dim"], out_features=7, dropout=cora_params["dropout"])
     optimizer = Adam(model.parameters(), lr = cora_params["lr"], weight_decay=cora_params["weight_decay"])
