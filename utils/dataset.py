@@ -22,7 +22,7 @@ def dataloader(param, default_dir = "./Data", is_normalized_adj = True, device =
     test_mask = graph.ndata["test_mask"].to(device)
 
     adj = graph.adjacency_matrix()
-    adj = torch.FloatTensor(adj)
+    adj = torch.FloatTensor(adj.to_dense())
 
     edges = graph.edges()
 

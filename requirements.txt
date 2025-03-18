@@ -2,3 +2,4 @@ torch_geometric
 numpy
 networkx
 jax
+scikit-learn
