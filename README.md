@@ -34,4 +34,12 @@ CORA Dataset
 | 2 layer GCN                              | 0.801         |
 | MLP Based Self Distillation Model        | 0.84399       |
 
-
+```
+@article{wu2024teacher,
+  title={A Teacher-Free Graph Knowledge Distillation Framework with Dual Self-Distillation},
+  author={Wu, Lirong and Lin, Haitao and Gao, Zhangyang and Zhao, Guojiang and Li, Stan Z},
+  journal={IEEE Transactions on Knowledge and Data Engineering},
+  year={2024},
+  publisher={IEEE}
+}
+```
