@@ -27,7 +27,6 @@ if __name__ == "__main__":
 
     # gnn = CoraModel(in_features=features.shape[1], hidden_features=cora_params["hid_dim"], out_features=7, dropout=cora_params["dropout"])
     # trainer = Trainer(model = gnn, loss_fn = torch.nn.CrossEntropyLoss(), epochs=None, optimizer=None, device = device)
-
     # features = trainer.evaluate(adj = adj, features = features, labels = labels, test_mask = test_mask)
 
     #### Graph Attributes ####
@@ -130,12 +129,6 @@ if __name__ == "__main__":
         if val_acc > val_best:
             val_best = val_acc
             test_val = test_acc
-            early_stop = 0
-        else:
-            early_stop += 1
-            if early_stop >= 50:
-                print("Early Stopping")
-                break
 
 
         print(f"Epoch = {epoch+1}/{cora_params["epochs"]} --- classification loss = {epoch_classification_loss/len(edge_id_loader)} --- neighbourhood loss = {epoch_neighbourhood_loss/len(edge_id_loader)} --- Total Loss = {epoch_total_loss/len(edge_id_loader)}")
