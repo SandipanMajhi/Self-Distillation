@@ -49,7 +49,7 @@ class Trainer:
         for epoch in tqdm(range(self.epochs)):
             self.model.train()
             self.optimizer.zero_grad()
-            output = self.model(features, adj)
+            output,_ = self.model(features, adj)
             loss = self.loss_fn(output[train_idx].to(self.device), labels[train_idx].to(self.device))
 
             
@@ -65,7 +65,7 @@ class Trainer:
 
             self.model.eval()
             with torch.no_grad():
-                output = self.model(features, adj)
+                output,_ = self.model(features, adj)
                 loss = self.loss_fn(output[val_idx].to(self.device), labels[val_idx].to(self.device))
 
                 val_pred = torch.argmax(output[val_idx],  dim = 1)
@@ -100,7 +100,7 @@ class Trainer:
     
         self.model.eval()
         with torch.no_grad():
-            output = self.model(features, adj)
+            output, features = self.model(features, adj)
             loss = self.loss_fn(output[test_idx].to(self.device), labels[test_idx].to(self.device))
 
             test_pred = torch.argmax(output[test_idx],  dim = 1)
@@ -108,6 +108,7 @@ class Trainer:
 
             testacc = accuracy_score(test_label.cpu(), test_pred.cpu())
 
-            print(f"Test Set Accuracy = {testacc}")
+            print(f"Test Set Accuracy of GCN alone = {testacc}")
 
+        return features
 

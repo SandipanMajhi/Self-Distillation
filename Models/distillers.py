@@ -51,7 +51,8 @@ class EdgeAdapter(nn.Module):
         self.fc_layer = nn.Linear(in_features, hidden_dim)
         self.attn = nn.Linear(2*hidden_dim, 1, bias = False)
         self.norm = nn.BatchNorm1d(hidden_dim)
-        self.param = param
+        self.params = param
+        self.sigmoid = nn.Sigmoid()
 
     
     def forward(self, src, dest):

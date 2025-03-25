@@ -14,11 +14,16 @@ class CoraModel(nn.Module):
 
     def forward(self, x, adj):
         x = self.gcn1(x, adj)
-        x = self.relu(x)
-        x = self.dropout(x)
+        x_ = self.relu(x)
+        x = self.dropout(x_)
         x = self.gcn2(x, adj)
 
-        return x
+        return x, x_
+    
+
+class CoraTGS(nn.Module):
+    def __init__(self, in_features, hidden_features, out_features, dropout):
+        super().__init__()
 
 
 
